@@ -10,25 +10,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.Parse;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
+import com.parse.SaveCallback;
 
 
-public class HomeActivity extends Activity {
+public class Post extends Activity {
 
     EditText Nombre, Password, email, pais;
     String strNombre, strPassword, strEmail, strPais;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.post_activity);
 
-        Parse.initialize(this, "CofixcfvGfJogAXWkPHQg44lhIlgv1uEeHizUZBt", "wo0lZyD1DpzhcyhvM2tyMsMi5hR7klpfCKsmiD0H");
+        Parse.initialize(this, "5WuiPSAi4muY3pCKIW7MtsB8Y33imI4zrK0fLxA7", "WN7W7Y2FZo0khvdD9PGiQNjxC0Iq27x0czCIsQ3P");
 
-        Button btn = (Button) findViewById(R.id.button);
+
+        Button btn = (Button) findViewById(R.id.btnPost);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,17 +43,15 @@ public class HomeActivity extends Activity {
                 strEmail = email.getText().toString();
                 strPais = pais.getText().toString();
 
-                ParseUser user = new ParseUser();
-                user.setUsername(strNombre);
-                user.setPassword(strPassword);
-                user.setEmail(strEmail);
+                ParseObject user = new ParseObject("Registro");
+                user.put("nombre", strNombre);
+                user.put("email", strEmail);
+                user.put("servicio", strPais);
 
-                user.put("Pais", strPais);
-
-                user.signUpInBackground(new SignUpCallback() {
+                user.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if(e == null) {
+                        if (e == null) {
                             Toast.makeText(getApplicationContext(), "Exito", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(getApplicationContext(), "Mal", Toast.LENGTH_LONG).show();

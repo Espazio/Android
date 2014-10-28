@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Password"
-        android:hint="Contraseña"
+        android:hint="Apellido"
         android:layout_marginTop="47dp"
         android:layout_below="@+id/Nombre"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:layout_alignLeft="@+id/btnPost"
+        android:layout_alignStart="@+id/btnPost" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,14 +43,14 @@
         android:id="@+id/Pais"
         android:layout_below="@+id/email"
         android:layout_centerHorizontal="true"
-        android:hint="Pais"
+        android:hint="Servicio"
         android:layout_marginTop="67dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
-        android:id="@+id/button"
+        android:id="@+id/btnPost"
         android:layout_below="@+id/Pais"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp" />
