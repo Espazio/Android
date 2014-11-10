@@ -25,14 +25,14 @@ import java.util.List;
 /**
  * Created by jonathan on 24/10/14.
  */
-public class Get extends Fragment {
+public class Get extends Activity {
 
     public TextView textView;
     public Button btnObtener;
     public EditText editTextNombre;
     String strNombre;
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_activity);
@@ -57,15 +57,17 @@ public class Get extends Fragment {
 
                         } else {
                             // something went wrong
-                            
+
                             Toast.makeText(getApplicationContext(), "NO Funciono el ParseQuery", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
-        });*/
+        });
+    }
+}
 
-    @Override
+    /*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.get_activity, container, false);
@@ -94,7 +96,7 @@ public class Get extends Fragment {
                             Toast.makeText(getActivity(), "NO Funciono el ParseQuery", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });*/
+                });
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Registro");
                 query.whereEqualTo("nombre", editTextNombre.getText().toString());
@@ -113,6 +115,6 @@ public class Get extends Fragment {
 
         return rootView;
     }
-}
+}*/
 
 

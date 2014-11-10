@@ -1,20 +1,20 @@
-package com.jonaxel.testparse;
+package com.jonaxel.testparse.ViewPagerFiles;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.jonaxel.testparse.R;
+
 /**
  * Created by jonathan on 29/10/14.
  */
 public class Fragment1 extends Fragment {
-
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (container == null) {
             return null;

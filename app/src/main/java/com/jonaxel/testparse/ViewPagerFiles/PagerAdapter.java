@@ -1,4 +1,4 @@
-package com.jonaxel.testparse;
+package com.jonaxel.testparse.ViewPagerFiles;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 /**
- * Created by jonathan on 29/10/14.
+ * Created by jonathan on 9/11/14.
  */
 public class PagerAdapter extends FragmentPagerAdapter {
 

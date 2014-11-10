@@ -1,4 +1,4 @@
-package com.jonaxel.testparse;
+package com.jonaxel.testparse.ViewPagerFiles;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.jonaxel.testparse.R;
+
 /**
  * Created by jonathan on 29/10/14.
  */
-public class Fragment3 extends Fragment {
-
+public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -20,6 +21,6 @@ public class Fragment3 extends Fragment {
             return null;
         }
 
-        return (LinearLayout) inflater.inflate(R.layout.viewpager_fragment3, container, false);
+        return (LinearLayout) inflater.inflate(R.layout.viewpager_fragment2, container, false);
     }
 }

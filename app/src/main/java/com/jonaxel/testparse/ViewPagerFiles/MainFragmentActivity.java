@@ -1,9 +1,12 @@
-package com.jonaxel.testparse;
+package com.jonaxel.testparse.ViewPagerFiles;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+
+
+import com.jonaxel.testparse.R;
 
 import java.util.List;
 import java.util.Vector;
@@ -32,6 +35,7 @@ public class MainFragmentActivity extends FragmentActivity {
         PagerAdapter mPagerAdapter = new PagerAdapter(this.getSupportFragmentManager(), fragments);
 
         ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+        pager.setPageTransformer(true, new ZoomOutTranformer());
         pager.setAdapter(mPagerAdapter);
 
     }
