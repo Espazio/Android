@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
@@ -63,14 +64,14 @@ public class NavigationDrawerTest extends Activity {
         dataList.add(new DrawerItem(true)); // adding a spinner to the list
 
         dataList.add(new DrawerItem("My Favorites")); // adding a header to the list
-        dataList.add(new DrawerItem("Message", R.drawable.ic_action_email));
-        dataList.add(new DrawerItem("Likes", R.drawable.ic_action_good));
-        dataList.add(new DrawerItem("Games", R.drawable.ic_action_gamepad));
-        dataList.add(new DrawerItem("Lables", R.drawable.ic_action_labels));
+        dataList.add(new DrawerItem("Mapa", R.drawable.ic_action_email));
+        dataList.add(new DrawerItem("¿Cómo funciona?", R.drawable.ic_action_good));
+        dataList.add(new DrawerItem("Acerca de", R.drawable.ic_action_about));
+        dataList.add(new DrawerItem("Caracterízticas del espacio", R.drawable.ic_action_labels));
 
         dataList.add(new DrawerItem("Main Options"));// adding a header to the list
-        dataList.add(new DrawerItem("Search", R.drawable.ic_action_search));
-        dataList.add(new DrawerItem("Cloud", R.drawable.ic_action_cloud));
+        dataList.add(new DrawerItem("Reservar", R.drawable.ic_action_search));
+        dataList.add(new DrawerItem("Ayuda", R.drawable.ic_action_help));
         dataList.add(new DrawerItem("Camara", R.drawable.ic_action_camera));
         dataList.add(new DrawerItem("Video", R.drawable.ic_action_video));
         dataList.add(new DrawerItem("Groups", R.drawable.ic_action_group));
@@ -198,7 +199,10 @@ public class NavigationDrawerTest extends Activity {
                         .commit();
                 break;
             case 8:
-                fragment = new FragmentThree();
+
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://www.google.com")));
+
+                /*fragment = new FragmentThree();
                 actionBar.show();
                 args.putString(FragmentThree.ITEM_NAME, dataList.get(possition)
                         .getItemName());
@@ -208,9 +212,10 @@ public class NavigationDrawerTest extends Activity {
                 fragment.setArguments(args);
                 frgManager = getFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                        .commit();
+                        .commit();*/
                 break;
             case 9:
+
                 fragment = new FragmentOne();
                 actionBar.show();
                 args.putString(FragmentOne.ITEM_NAME, dataList.get(possition)

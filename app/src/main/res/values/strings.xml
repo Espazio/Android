@@ -19,4 +19,13 @@
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
 
+    <string name="funciona">¿Cómo funciona?</string>
+    <string name="mapa">Mapa</string>
+    <string name="acercade">Acerca de</string>
+    <string name="caracteri">Características del espacio</string>
+
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget urna elementum, pharetra ante ac, elementum neque. Curabitur a leo eu risus consectetur vulputate non id purus. Praesent mattis libero vel enim auctor facilisis. Proin vestibulum blandit magna et egestas. In tristique diam a condimentum iaculis. Suspendisse nec libero vel nibh bibendum vulputate. Duis sit amet mauris ex. Etiam nec accumsan leo, ut euismod nisl. Phasellus nec tellus condimentum ipsum rhoncus finibus sed quis mi. Etiam posuere nibh sed dui porta malesuada. Pellentesque lobortis pretium ipsum in pretium. Aliquam hendrerit est at molestie ornare. Curabitur sapien elit, iaculis et venenatis ut, fermentum in sem. Phasellus ut nibh felis. Morbi venenatis justo quis mauris hendrerit fringilla.</string>
+
+
 </resources>

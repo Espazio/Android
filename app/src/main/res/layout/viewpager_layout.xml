@@ -22,10 +22,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inica Sesión"
+        android:text="Inicia Sesión"
         android:id="@+id/btnInicioSesion"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lorem_ipsum"
+        android:id="@+id/textView6"
+        android:layout_marginBottom="38dp"
+        android:layout_above="@+id/btnRegistrarte"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
