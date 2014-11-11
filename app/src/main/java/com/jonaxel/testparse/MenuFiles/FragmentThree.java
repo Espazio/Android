@@ -3,13 +3,14 @@ package com.jonaxel.testparse.MenuFiles;
 /**
  * Created by jonathan on 30/10/14.
  */
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jonaxel.testparse.R;
 
@@ -38,6 +39,7 @@ public class FragmentThree extends Fragment {
         tvItemName.setText(getArguments().getString(ITEM_NAME));
         ivIcon.setImageDrawable(view.getResources().getDrawable(
                 getArguments().getInt(IMAGE_RESOURCE_ID)));
+        Toast.makeText(getActivity(),"Inside a fragment!",Toast.LENGTH_SHORT).show();
         return view;
     }
 

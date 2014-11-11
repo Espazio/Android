@@ -8,10 +8,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -21,12 +22,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.jonaxel.testparse.FragmentTestClass;
 import com.jonaxel.testparse.ViewPagerFiles.MainFragmentActivity;
 import com.jonaxel.testparse.R;
 
-public class NavigationDrawerTest extends Activity {
+public class NavigationDrawerTest extends FragmentActivity {
 
     private DrawerLayout mDrawerLayout;
+
+    private DrawerLayout myDrawerLayout;
+
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -35,7 +40,10 @@ public class NavigationDrawerTest extends Activity {
     CustomDrawerAdapter adapter;
 
     FragmentManager frgManager;
+    FragmentManager fragmentManager;
+
     Fragment fragment = null;
+    Fragment fragment2 = null;
 
     ActionBar actionBar;
 
@@ -49,12 +57,15 @@ public class NavigationDrawerTest extends Activity {
         // Initializing
         actionBar = getActionBar();
 
-
-
         dataList = new ArrayList<DrawerItem>();
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        myDrawerLayout = (DrawerLayout) findViewById(R.id.test_drawerlayout);
+
+        /*myDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+                GravityCompat.START);*/
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
@@ -138,6 +149,8 @@ public class NavigationDrawerTest extends Activity {
 
 
         Bundle args = new Bundle();
+        Bundle args2 = new Bundle();
+
         switch (possition) {
 
             case 2:
@@ -149,16 +162,32 @@ public class NavigationDrawerTest extends Activity {
                         .get(possition).getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
             case 3:
 
-                Intent intent = new Intent(this, MainFragmentActivity.class);
-                startActivity(intent);
+                fragment = new MainFragmentActivity();
+                actionBar.show();
+                args.putString(FragmentThree.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList
+                        .get(possition).getImgResID());
 
+                fragment.setArguments(args);
+
+                frgManager = getSupportFragmentManager();
+                frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                        .commit();
                 break;
+
+                //TODO: Use a fragment instead!
+                //startActivity(new Intent(this, MainFragmentActivity.class));
+
+
+
             case 4:
                 fragment = new FragmentTwo();
                 actionBar.show();
@@ -168,7 +197,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -181,7 +210,7 @@ public class NavigationDrawerTest extends Activity {
                         .get(possition).getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -194,7 +223,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -210,7 +239,7 @@ public class NavigationDrawerTest extends Activity {
                         .get(possition).getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();*/
                 break;
@@ -224,7 +253,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -237,7 +266,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -250,7 +279,7 @@ public class NavigationDrawerTest extends Activity {
                         .get(possition).getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -263,7 +292,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -276,7 +305,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -289,7 +318,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
@@ -302,7 +331,7 @@ public class NavigationDrawerTest extends Activity {
                         .getImgResID());
 
                 fragment.setArguments(args);
-                frgManager = getFragmentManager();
+                frgManager = getSupportFragmentManager();
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
