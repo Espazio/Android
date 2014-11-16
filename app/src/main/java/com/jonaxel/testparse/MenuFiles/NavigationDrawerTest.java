@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,12 +19,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
-import com.jonaxel.testparse.FragmentTestClass;
 import com.jonaxel.testparse.ViewPagerFiles.MainFragmentActivity;
 import com.jonaxel.testparse.R;
 
@@ -142,7 +146,15 @@ public class NavigationDrawerTest extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.actividad_drawer, menu);
-        return true;
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     public void SelectItem(int possition) {
@@ -182,11 +194,6 @@ public class NavigationDrawerTest extends FragmentActivity {
                 frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                         .commit();
                 break;
-
-                //TODO: Use a fragment instead!
-                //startActivity(new Intent(this, MainFragmentActivity.class));
-
-
 
             case 4:
                 fragment = new FragmentTwo();
@@ -374,8 +381,13 @@ public class NavigationDrawerTest extends FragmentActivity {
 
             return true;
         }
-
-        return false;
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                //search action
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private class DrawerItemClickListener implements

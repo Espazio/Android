@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jonaxel.testparse.ActividadDrawer">
+
+    <item android:id="@+id/action_search"
+        android:icon="@drawable/ic_action_search"
+        android:title="search"
+        android:showAsAction="ifRoom"
+        android:actionViewClass="android.widget.SearchView"/>
+
+</menu>

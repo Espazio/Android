@@ -18,7 +18,6 @@ import java.util.Vector;
  * Created by jonathan on 29/10/14.
  */
 
-//TODO: Change father class for a Fragment instead.
 public class MainFragmentActivity extends Fragment {
 
     /*
@@ -41,6 +40,8 @@ public class MainFragmentActivity extends Fragment {
         return view;
     }
 
+
+
     private void initPagin(View inflatedLayout) {
         List<Fragment> fragments = new Vector<Fragment>();
         fragments.add(Fragment.instantiate(getActivity(), Fragment1.class.getName()));
@@ -49,7 +50,7 @@ public class MainFragmentActivity extends Fragment {
         PagerAdapter mPagerAdapter = new PagerAdapter(getActivity().getSupportFragmentManager(), fragments);
 
         ViewPager pager = (ViewPager) inflatedLayout.findViewById(R.id.viewpager);
-        pager.setPageTransformer(true, new ZoomOutTranformer());
+//        pager.setPageTransformer(true, new ZoomOutTranformer());
         pager.setAdapter(mPagerAdapter);
 
     }
