@@ -1,8 +1,9 @@
 package com.jonaxel.testparse;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * Created by jonathan on 24/10/14.
  */
-public class Get extends Activity {
+public class Get extends Fragment {
 
     public TextView textView;
     public Button btnObtener;
@@ -33,41 +34,79 @@ public class Get extends Activity {
     String strNombre;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.get_activity);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        Parse.initialize(this, "5WuiPSAi4muY3pCKIW7MtsB8Y33imI4zrK0fLxA7", "WN7W7Y2FZo0khvdD9PGiQNjxC0Iq27x0czCIsQ3P");
+        View view = inflater.inflate(R.layout.get_activity, container, false);
 
-        textView = (TextView) findViewById(R.id.Nombre);
-        btnObtener = (Button) findViewById(R.id.button);
+        Parse.initialize(getActivity(), "CofixcfvGfJogAXWkPHQg44lhIlgv1uEeHizUZBt", "wo0lZyD1DpzhcyhvM2tyMsMi5hR7klpfCKsmiD0H");
+
+        textView = (TextView) view.findViewById(R.id.textView);
+        editTextNombre = (EditText) view.findViewById(R.id.editTextNombre);
+        btnObtener = (Button) view.findViewById(R.id.button);
+
+
+        initPagin();
+
+
+        return view;
+
+    }
+
+    private void initPagin() {
 
         btnObtener.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("TestObject");
+                strNombre = editTextNombre.getText().toString();
+
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Mexico");
+                query.whereEqualTo("Nombre", strNombre);
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.d("Nombre: ", "Retrieved " + scoreList.get(0) +" scores");
+                        } else {
+                            Log.d("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+            }
+
+            /*@Override
+            public void onClick(View view) {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Mexico");
                 query.getInBackground("CofixcfvGfJogAXWkPHQg44lhIlgv1uEeHizUZBt", new GetCallback<ParseObject>() {
                     public void done(ParseObject object, ParseException e) {
                         if (e == null) {
                             // object will be your game score
 
-                            textView.setText(object.getString("foo"));
+                            textView.setText(object.getString("Precio"));
 
-                            Toast.makeText(getApplicationContext(), "Funciono el ParseQuery", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Funciono el ParseQuery", Toast.LENGTH_SHORT).show();
 
                         } else {
                             // something went wrong
+                            e.printStackTrace();
 
-                            Toast.makeText(getApplicationContext(), "NO Funciono el ParseQuery", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "NO Funciono el ParseQuery", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-            }
+            }*/
         });
     }
 }
 
+
     /*@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.get_activity);
+
+
+    }
+}
+@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.get_activity, container, false);

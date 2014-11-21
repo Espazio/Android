@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.jonaxel.testparse.Get;
 import com.jonaxel.testparse.ViewPagerFiles.MainFragmentActivity;
 import com.jonaxel.testparse.R;
 
@@ -196,7 +197,7 @@ public class NavigationDrawerTest extends FragmentActivity {
                 break;
 
             case 4:
-                fragment = new FragmentTwo();
+                fragment = new Get();
                 actionBar.show();
                 args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition)
                         .getItemName());
