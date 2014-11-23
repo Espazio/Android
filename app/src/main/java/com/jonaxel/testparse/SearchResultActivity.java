@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -29,8 +30,10 @@ import java.util.List;
  */
 public class SearchResultActivity extends FragmentActivity {
 
-    private final LatLng UPV = new LatLng(39.481106, -0.340987);
+    private  LatLng UPV ;
     private LatLng positionDinamic;
+
+    GoogleMap mapa;
 
     private TextView txtQuery;
 
@@ -47,6 +50,8 @@ public class SearchResultActivity extends FragmentActivity {
 
         Parse.initialize(this, "CofixcfvGfJogAXWkPHQg44lhIlgv1uEeHizUZBt", "wo0lZyD1DpzhcyhvM2tyMsMi5hR7klpfCKsmiD0H");
 
+
+        UPV = new LatLng(39.481106, -0.340987);
         // get the action bar
         ActionBar actionBar = getActionBar();
 
@@ -56,19 +61,12 @@ public class SearchResultActivity extends FragmentActivity {
         txtQuery = (TextView) findViewById(R.id.txtQuery);
 
 
-        GoogleMap mapa = ((SupportMapFragment) getSupportFragmentManager()
+        mapa = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
         mapa.getUiSettings().setZoomControlsEnabled(false);
         mapa.getUiSettings().setCompassEnabled(true);
-        mapa.addMarker(new MarkerOptions()
-                .position(UPV)
-                .title("Test")
-                .snippet(querySearch)
-                .icon(BitmapDescriptorFactory
-                        .fromResource(R.drawable.ic_launcher))
-                .anchor(0.5f, 0.5f));
-        handleIntent(getIntent());
 
+        handleIntent(getIntent());
         //handleMap();
     }
 
@@ -91,7 +89,7 @@ public class SearchResultActivity extends FragmentActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             querySearch = intent.getStringExtra(SearchManager.QUERY);
 
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Mexico");
+            final ParseQuery<ParseObject> query = ParseQuery.getQuery("Mexico");
             query.whereEqualTo("Nombre", querySearch);
             query.getFirstInBackground(new GetCallback<ParseObject>() {
                 public void done(ParseObject object, ParseException e) {
@@ -104,8 +102,18 @@ public class SearchResultActivity extends FragmentActivity {
                         lng = Double.parseDouble(object.getString("Lnt"));
 
                         positionDinamic = new LatLng(lat, lng);
+                        Log.d("LatLng now", positionDinamic.toString());
 
-                        Log.d("LatLng", positionDinamic.toString());
+                        mapa.addMarker(new MarkerOptions()
+                                .position(positionDinamic)
+                                .title("Test")
+                                .snippet(querySearch)
+                                .icon(BitmapDescriptorFactory
+                                        .fromResource(R.drawable.ic_launcher))
+                                .anchor(0.5f, 0.5f));
+                        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(positionDinamic, 15));
+
+
                     }
                 }
             });
